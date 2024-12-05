@@ -1,0 +1,380 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Pirata+One&display=swap');
+
+:root {
+  --parchment-light: #f4e4bc;
+  --parchment-dark: #e5d0a3;
+  --ink-color: #2b1810;
+  --gold: #ffd700;
+  --blood-red: #8b0000;
+  --ocean-blue: #2196f3;
+  --deep-sea: #00499d;
+  --treasure-gold: #ffd700;
+  --blood-red: #f44336;
+  --parchment: #fff8e1;
+  --ink: #263238;
+  --accent: #ff9800;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: "Crimson Pro", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+#map {
+  width: 100%;
+  height: 100%;
+  background-color: #01082b;
+}
+#planeSelector {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background-color: var(--deep-sea);
+  border: 2px solid var(--treasure-gold);
+  border-radius: 12px;
+  font-family: 'Pirata One', cursive;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px 15px;
+  font-size: 22px;
+  text-transform: uppercase;
+  border: 4px double #ffd700;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+}
+#planeSelector a {
+  text-decoration: none;
+  color: #ffd700;
+  margin: 0 8px;
+  cursor: pointer;
+}
+#planeSelector a.active {
+  color: #ffffff;
+}
+#planeSelector span {
+  color: #888;
+}
+#sidepanel {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  width: 300px;
+  height: calc(100% - 40px);
+  background-color: var(--parchment);
+  border: 2px solid var(--treasure-gold);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: var(--parchment-light);
+  color: var(--ink-color);
+  padding: 20px;
+  box-sizing: border-box;
+  transition: transform 0.3s ease-in-out;
+  box-shadow: -5px 0 15px rgba(139, 0, 0, 0.3);
+  overflow-y: auto;
+  z-index: 1000;
+  border-radius: 50px;
+  transform: translateX(calc(100% + 20px));
+  border: 4px double #ffd700;
+  font-family: "Crimson Pro", serif;
+}
+
+#sidepanel.open {
+  transform: translateX(0);
+}
+#closePanel {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  cursor: pointer;
+  font-size: 24px;
+  color: var(--blood-red);
+  font-family: 'Pirata One', cursive;
+  text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+  transition: transform 0.2s ease;
+}
+#closePanel:hover {
+  transform: rotate(90deg);
+}
+#directionButton {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  background-color: var(--blood-red);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-family: 'Pirata One', cursive;
+  letter-spacing: 1px;
+  transition: all 0.2s ease;
+  background: linear-gradient(var(--blood-red), #660000);
+  border: 2px solid #ffd700;
+  cursor: pointer;
+  border-radius: 20px;
+  width: auto;
+  display: inline-block;
+  text-transform: uppercase;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+  transition: all 0.3s ease;
+}
+#directionButton:hover {
+  background-color: var(--accent);
+  transform: translateY(-2px);
+  background: linear-gradient(#660000, var(--blood-red));
+  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+}
+#planetInfo p {
+  margin: 10px 0;
+  color: var(--ink-color);
+}
+#planetInfo strong {
+  color: var(--blood-red);
+  font-weight: bold;
+  font-family: 'Pirata One', cursive;
+  font-size: 1.2em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+#searchButton,
+#searchInput {
+  background-color: var(--blood-red);
+  border: none;
+  color: white;
+  font-family: 'Pirata One', cursive;
+  letter-spacing: 1px;
+  transition: all 0.2s ease;
+  background: linear-gradient(var(--blood-red), #660000);
+  border: 2px solid #ffd700;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+  transition: all 0.3s ease;
+}
+#searchButton:hover {
+  background-color: var(--accent);
+  transform: translateY(-2px);
+  background: linear-gradient(#660000, var(--blood-red));
+  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+}
+#searchInput::placeholder {
+  color: #996633;
+}
+#searchContainer {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+}
+#searchInput {
+  width: 250px;
+  height: 35px;
+  font-size: 16px;
+  padding: 0 15px;
+  border: none;
+  border-radius: 20px 0 0 20px;
+  outline: none;
+  background: var(--parchment-light);
+  color: var(--ink-color);
+  border: 3px double #ffd700;
+  font-family: "Crimson Pro", serif;
+}
+#searchButton {
+  height: 40px;
+  padding: 0 15px;
+  font-size: 16px;
+  background-color: var(--blood-red);
+  border: none;
+  color: white;
+  font-family: 'Pirata One', cursive;
+  letter-spacing: 1px;
+  transition: all 0.2s ease;
+  background: linear-gradient(var(--blood-red), #660000);
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+  transition: all 0.3s ease;
+}
+#searchButton:hover {
+  background-color: var(--accent);
+  transform: translateY(-2px);
+  background: linear-gradient(#660000, var(--blood-red));
+  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+}
+#createConstellationButton {
+  height: 40px;
+  width: 40px;
+  font-size: 20px;
+  background-color: var(--blood-red);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-family: 'Pirata One', cursive;
+  letter-spacing: 1px;
+  transition: all 0.2s ease;
+  background: linear-gradient(var(--blood-red), #660000);
+  border: 2px solid #ffd700;
+  border-radius: 0 20px 20px 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+  transition: all 0.3s ease;
+}
+#createConstellationButton.active {
+  background-color: #4b2ac4;
+  color: white;
+}
+#createConstellationButton:hover {
+  background-color: var(--accent);
+  transform: translateY(-2px);
+  background: linear-gradient(#660000, var(--blood-red));
+  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+}
+.constellation-line {
+  stroke: var(--treasure-gold);
+  stroke-width: 2;
+  stroke-dasharray: 5, 5;
+  filter: drop-shadow(0 0 3px rgba(255, 215, 0, 0.5));
+}
+#searchResults {
+  list-style-type: none;
+  padding: 0;
+}
+#searchResults li {
+  background-color: #fff;
+  border-left: 4px solid var(--blood-red);
+  border-radius: 8px;
+  margin: 8px 0;
+  transition: all 0.2s ease;
+  padding: 15px;
+  cursor: pointer;
+  border-bottom: 2px solid var(--blood-red);
+  color: var(--ink-color);
+  background: var(--parchment-dark);
+  transition: all 0.3s ease;
+  margin: 5px 0;
+  border-radius: 4px;
+}
+#searchResults li:hover {
+  background-color: var(--parchment);
+  border-left: 4px solid var(--treasure-gold);
+  transform: translateX(4px);
+  background: var(--parchment-light);
+  border-color: var(--gold);
+  box-shadow: 0 0 10px rgba(139, 0, 0, 0.2);
+  transform: translateX(5px);
+}
+#constellationList {
+  list-style-type: none;
+  padding: 0;
+}
+#constellationList li {
+  background-color: #fff;
+  border-left: 4px solid var(--blood-red);
+  border-radius: 8px;
+  margin: 8px 0;
+  transition: all 0.2s ease;
+  padding: 15px;
+  cursor: pointer;
+  border-bottom: 2px solid var(--blood-red);
+  color: var(--ink-color);
+  background: var(--parchment-dark);
+  transition: all 0.3s ease;
+  margin: 5px 0;
+  border-radius: 4px;
+}
+#constellationList li:hover {
+  background-color: var(--parchment);
+  border-left: 4px solid var(--treasure-gold);
+  transform: translateX(4px);
+  background: var(--parchment-light);
+  border-color: var(--gold);
+  box-shadow: 0 0 10px rgba(139, 0, 0, 0.2);
+  transform: translateX(5px);
+}
+
+.planet {
+  fill: var(--blood-red) !important;
+}
+
+.aura {
+  fill: var(--blood-red) !important;
+  opacity: 0.3;
+}
+
+#sidepanel::before,
+#sidepanel::after {
+  position: absolute;
+  color: #ffd700;
+  font-size: 24px;
+  padding: 10px;
+}
+
+#sidepanel::before {
+  font-size: 20px;
+  color: var(--blood-red);
+  top: 10px;
+  left: 10px;
+}
+
+#sidepanel::after {
+  content: '⚓';
+  bottom: 10px;
+  right: 10px;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--parchment-dark);
+  border: 1px solid var(--gold);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--blood-red);
+  border: 2px solid var(--treasure-gold);
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(#660000, var(--blood-red));
+}
+
+#planetName {
+  font-family: 'Pirata One', cursive;
+  color: var(--blood-red);
+  font-size: 24px;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+  border-bottom: 2px solid var(--treasure-gold);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.sun-ripple {
+  fill: none;
+  stroke: #ffa500;
+  stroke-width: 1;
+  opacity: 0;
+  transform-origin: center;
+  animation: ripple 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes ripple {
+  0% {
+    r: 8;
+    opacity: 0.6;
+    stroke-width: 2;
+  }
+  100% {
+    r: 240;
+    opacity: 0;
+    stroke-width: 0.5;
+  }
+}

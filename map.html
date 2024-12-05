@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aries Space</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="map.css" />
+</head>
+<body>
+    <div id="map"></div>
+    <div id="searchContainer">
+        <input type="text" id="searchInput" placeholder="Search planets..." />
+        <button id="searchButton">Search</button>
+        <button id="createConstellationButton" title="Create constellation">
+            +
+        </button>
+    </div>
+    <div id="planeSelector">
+        <a href="#" data-plane="xy" class="active">(x, y)</a>
+        <span>|</span> <a href="#" data-plane="xz">(x, z)</a> <span>|</span>
+        <a href="#" data-plane="yz">(y, z)</a>
+    </div>
+    <div id="sidepanel">
+        <span id="closePanel">✖</span>
+        <br>
+        <div id="searchResultsContainer">
+            <ul id="searchResults"></ul>
+        </div>
+        <div id="planetInfoContainer">
+            <h2 id="planetName"></h2>
+            <button id="directionButton">Show Direction</button>
+            <div id="planetInfo">
+                <p>
+                    <strong>Host Star:</strong> <span id="hostStar"></span>
+                </p>
+                <p>
+                    <strong>Discovery Year:</strong>
+                    <span id="discoveryYear"></span>
+                </p>
+                <p>
+                    <strong>Planet Radius:</strong>
+                    <span id="planetRadius"></span>
+                </p>
+                <p>
+                    <strong>Star Temperature:</strong>
+                    <span id="starTemperature"></span>
+                </p>
+                <p>
+                    <strong>Distance:</strong>
+                    <span id="planetDistance"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="map.js"></script>
+</body>
+</html>
