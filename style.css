@@ -99,7 +99,6 @@ h1 {
   gap: 20px;
 }
 
-/* Update the base button styles */
 button {
   padding: 10px 25px;
   border-radius: 5px;
@@ -111,7 +110,6 @@ button {
   overflow: hidden;
 }
 
-/* Launch button hover effects */
 .launch {
   background: linear-gradient(135deg, var(--cosmic-red), var(--nebula-purple));
   border: 2px solid var(--star-gold);
@@ -149,7 +147,6 @@ button {
   opacity: 1;
 }
 
-/* Features button hover effects */
 .features {
   background-color: transparent;
   border: 2px solid var(--star-gold);
@@ -183,7 +180,6 @@ button {
   transform-origin: left;
 }
 
-/* Link styles inside features button */
 .features a {
   color: inherit;
   text-decoration: none;
@@ -191,12 +187,10 @@ button {
   z-index: 1;
 }
 
-/* Add glow effect on button hover */
 .launch:hover, .features:hover {
   filter: brightness(1.1);
 }
 
-/* Add ripple effect on click */
 button:active {
   transform: scale(0.98);
 }
